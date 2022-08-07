@@ -25,19 +25,20 @@ public interface UserDao {
     User getUserById(long id);
 
     @Select("select * from C where RID in (select RID from B where UID = #{uId})")
-    @Results(id = "roleMap",value = {
+    @Results(id = "roleMap", value = {
             @Result(property = "roleId", column = "RID", jdbcType = JdbcType.BIGINT, id = true),
             @Result(property = "roleName", column = "RNAME", jdbcType = JdbcType.VARCHAR),
             @Result(property = "roleDesc", column = "RDESC", jdbcType = JdbcType.VARCHAR)
     })
     List<Role> getRole(long uId);
 
-    @SelectProvider(type = UserDaoSql.class,method = "getRoleById")
+    @SelectProvider(type = UserDaoSql.class, method = "getRoleById")
     @ResultMap("roleMap")
     Role getRoleById(long rId);
 
     @Select(" select * from a left join d on a.UID = d.UID ")
     @ResultMap(value = "userMap")
+    @ResultType(User.class)
     List<User> getUser();
 
     @Select(" select * from a left join d on a.UID = d.UID where a.UID = #{id} ")
@@ -48,6 +49,12 @@ public interface UserDao {
             @Result(property = "address", column = "ADDRESS", jdbcType = JdbcType.VARCHAR)
     })
     Map<String, Object> getUserMap(long id);
+
+    @Select(" select * from a left join d on a.UID = d.UID where a.UID = #{id} ")
+    @ResultMap("userMap")
+    @MapKey("id")
+    Map<Long, User> getUserMaps(long id);
+
 
     @Select(" select * from a left join d on a.UID = d.UID ")
     @ResultMap(value = "userMap")

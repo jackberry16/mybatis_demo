@@ -38,9 +38,14 @@ public class UserController {
         return userService.getUser();
     }
 
-    @GetMapping("user/map")
+    @GetMapping("user/map1")
     public Map<String, Object> getUserMap(@Param("id") long id) {
         return userService.getUserMap(id);
+    }
+
+    @GetMapping("user/map2")
+    public String getUserMaps(@Param("id") long id) {
+        return userService.getUserMaps(id);
     }
 
     @GetMapping("user/set")
