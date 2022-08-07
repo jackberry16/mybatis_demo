@@ -6,6 +6,7 @@ import com.example.mybatis_demo.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -57,5 +58,11 @@ public class UserController {
     public Set<User> getUserSet() {
         return userService.getUserSet();
     }
+
+    @PostMapping("user")
+    public long addUser(){
+        return userService.addUser();
+    }
+
 
 }

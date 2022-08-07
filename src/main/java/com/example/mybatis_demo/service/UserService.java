@@ -23,4 +23,6 @@ public interface UserService {
     String getUserListMap();
 
     Set<User> getUserSet();
+
+    long addUser();
 }

@@ -68,4 +68,8 @@ public interface UserDao {
     @Select(" select * from a left join d on a.UID = d.UID ")
     @ResultMap(value = "userMap")
     Set<User> getUserSet();
+
+    @Insert("insert into a (USERNAME,ADDRESS) values (#{user.userName},#{user.address})")
+    @Options(useGeneratedKeys = true, keyProperty = "user.id", keyColumn = "UID")
+    int addUser(@Param("user") User user);
 }

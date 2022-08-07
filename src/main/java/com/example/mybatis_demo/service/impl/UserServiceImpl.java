@@ -66,4 +66,13 @@ public class UserServiceImpl implements UserService {
         set.forEach(a -> System.out.println(a.toString()));
         return null;
     }
+
+    @Override
+    public long addUser() {
+        User user = new User();
+        user.setUserName("addTest");
+        user.setAddress("shanghai");
+        userDao.addUser(user);
+        return user.getId();
+    }
 }
