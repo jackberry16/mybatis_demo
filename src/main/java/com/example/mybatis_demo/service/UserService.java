@@ -20,5 +20,7 @@ public interface UserService {
 
     String getUserMaps(long id);
 
+    String getUserListMap();
+
     Set<User> getUserSet();
 }

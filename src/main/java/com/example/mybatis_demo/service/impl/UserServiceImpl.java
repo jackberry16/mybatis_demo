@@ -46,8 +46,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getUserMaps(long id) {
-        Map<Long,User> map = userDao.getUserMaps(id);
+        Map<Long, User> map = userDao.getUserMaps(id);
         map.keySet().forEach(a -> System.out.println(a + ":" + map.get(a)));
+        return null;
+    }
+
+    @Override
+    public String getUserListMap() {
+        List<Map<String, Object>> list = userDao.getUserListMap();
+        for (Map<String,Object> map:list){
+            map.keySet().forEach(a -> System.out.println(a + ":" + map.get(a)));
+        }
         return null;
     }
 

@@ -55,6 +55,15 @@ public interface UserDao {
     @MapKey("id")
     Map<Long, User> getUserMaps(long id);
 
+    @Select(" select * from a left join d on a.UID = d.UID ")
+    @Results({
+            @Result(property = "id", column = "UID", jdbcType = JdbcType.BIGINT, id = true),
+            @Result(property = "username", column = "USERNAME", jdbcType = JdbcType.VARCHAR),
+            @Result(property = "description", column = "UDESC", jdbcType = JdbcType.VARCHAR),
+            @Result(property = "address", column = "ADDRESS", jdbcType = JdbcType.VARCHAR)
+    })
+    List<Map<String, Object>> getUserListMap();
+
 
     @Select(" select * from a left join d on a.UID = d.UID ")
     @ResultMap(value = "userMap")

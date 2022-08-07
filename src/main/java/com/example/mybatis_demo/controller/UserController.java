@@ -48,6 +48,11 @@ public class UserController {
         return userService.getUserMaps(id);
     }
 
+    @GetMapping("user/map3")
+    public String getUserListMap() {
+        return userService.getUserListMap();
+    }
+
     @GetMapping("user/set")
     public Set<User> getUserSet() {
         return userService.getUserSet();
