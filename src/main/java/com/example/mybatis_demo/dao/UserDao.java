@@ -1,6 +1,7 @@
 package com.example.mybatis_demo.dao;
 
 import com.example.mybatis_demo.entity.Role;
+import com.example.mybatis_demo.entity.Score;
 import com.example.mybatis_demo.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
@@ -72,4 +73,13 @@ public interface UserDao {
     @Insert("insert into a (USERNAME,ADDRESS) values (#{user.userName},#{user.address})")
     @Options(useGeneratedKeys = true, keyProperty = "user.id", keyColumn = "UID")
     int addUser(@Param("user") User user);
+
+    @Select("select a.TYPE,b.SC " +
+            "  from SCORE a " +
+            "  join SCORE b " +
+            "    on a.TYPE = b.TYPE where a.TYPE= 'a' ")
+    Map<String, Integer> getUser1();
+
+    @MapKey("type")
+    Map<String,List<Score>> getUser3();
 }

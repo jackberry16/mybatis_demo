@@ -2,6 +2,7 @@ package com.example.mybatis_demo.service.impl;
 
 import com.example.mybatis_demo.dao.UserDao;
 import com.example.mybatis_demo.entity.Role;
+import com.example.mybatis_demo.entity.Score;
 import com.example.mybatis_demo.entity.User;
 import com.example.mybatis_demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getUserListMap() {
         List<Map<String, Object>> list = userDao.getUserListMap();
-        for (Map<String,Object> map:list){
+        for (Map<String, Object> map : list) {
             map.keySet().forEach(a -> System.out.println(a + ":" + map.get(a)));
         }
         return null;
@@ -74,5 +75,25 @@ public class UserServiceImpl implements UserService {
         user.setAddress("shanghai");
         userDao.addUser(user);
         return user.getId();
+    }
+
+    @Override
+    public String getUser1() {
+        Map<String, Integer> map = userDao.getUser1();
+        map.keySet().forEach(a -> System.out.println(a + ":" + map.get(a)));
+        return null;
+    }
+
+    @Override
+    public String getUser2() {
+        return null;
+    }
+
+    @Override
+    public String getUser3() {
+        Map<String, List<Score>> map = userDao.getUser3();
+        map.keySet().forEach(a -> System.out.println(a + ":" + map.get(a)));
+
+        return null;
     }
 }

@@ -64,5 +64,20 @@ public class UserController {
         return userService.addUser();
     }
 
+    @GetMapping("test/1")
+    public String getUser1(){
+        return userService.getUser1();
+    }
+
+    @GetMapping("test/2")
+    public String getUser2(){
+        return userService.getUser2();
+    }
+
+    @GetMapping("test/3")
+    public String getUser3(){
+        return userService.getUser3();
+    }
+
 
 }

@@ -25,4 +25,11 @@ public interface UserService {
     Set<User> getUserSet();
 
     long addUser();
+
+    String getUser1();
+
+    String getUser2();
+
+    String getUser3();
+
 }
